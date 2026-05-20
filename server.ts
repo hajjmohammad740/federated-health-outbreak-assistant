@@ -4,8 +4,8 @@ import { createServer as createViteServer } from "vite";
 import multer from "multer";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
-import pdf from "pdf-parse";
-import mammoth from "mammoth";
+//import * as pdfParse from "pdf-parse";
+import * as mammoth from "mammoth";
 
 dotenv.config();
 
@@ -155,8 +155,8 @@ app.post(
           .toLowerCase();
 
         if (ext === ".pdf") {
-          const parsed = await pdf(file.buffer);
-          text = parsed.text;
+          //const parsed = await pdf(file.buffer);
+          //text = parsed.text;
         } else if (ext === ".docx") {
           const parsed =
             await mammoth.extractRawText({
@@ -292,56 +292,35 @@ app.post("/api/login", (req, res) => {
 
 async function startServer() {
   try {
-    if (
-      process.env.NODE_ENV !==
-      "production"
-    ) {
-      const vite =
-        await createViteServer({
-          server: {
-            middlewareMode: true,
-          },
+    const isProd = process.env.NODE_ENV === "production";
 
-          appType: "spa",
-        });
+    if (!isProd) {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: "spa",
+      });
 
       app.use(vite.middlewares);
     } else {
-      const distPath =
-        path.join(
-          process.cwd(),
-          "dist"
-        );
+      const distPath = path.join(process.cwd(), "dist");
 
-      app.use(
-        express.static(distPath)
-      );
+      app.use(express.static(distPath));
 
       app.get("*", (req, res) => {
-        res.sendFile(
-          path.join(
-            distPath,
-            "index.html"
-          )
-        );
+        res.sendFile(path.join(distPath, "index.html"));
       });
     }
 
-    app.listen(
-      PORT,
-      "0.0.0.0",
-      () => {
-        console.log(
-          `Server running on port ${PORT}`
-        );
-      }
-    );
-  } catch (e) {
-    console.error(
-      "Server startup error:",
-      e
-    );
+    const PORT = Number(process.env.PORT) || 3000;
+
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error("Startup error:", err);
+    process.exit(1);
   }
+
 }
 
 startServer();
