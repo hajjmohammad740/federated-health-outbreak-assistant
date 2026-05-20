@@ -1,0 +1,6 @@
+{
+  "name": "Federated Health Outbreak Assistant",
+  "description": "A futuristic AI-powered thesis assistant for Federated Learning in Health Outbreak Detection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

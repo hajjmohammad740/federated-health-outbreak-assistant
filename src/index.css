@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg-dark: #050816;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-purple: #9333ea;
+  --color-border-cyan: rgba(34, 211, 238, 0.2);
+  --color-border-white: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-[#e0e0e0] font-sans antialiased selection:bg-accent-cyan/30;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-border-white rounded-2xl;
+}
+
+.glass-nav {
+  @apply bg-black/40 backdrop-blur-md border-b border-border-cyan;
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+.neon-glow-purple {
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-cyan to-white;
+}
+
+/* Markdown Styles */
+.markdown-body h1 { @apply text-2xl font-bold mb-4 mt-6 text-white; }
+.markdown-body h2 { @apply text-xl font-bold mb-3 mt-5 text-white; }
+.markdown-body h3 { @apply text-lg font-bold mb-2 mt-4 text-white; }
+.markdown-body p { @apply mb-4 leading-relaxed text-white/90; }
+.markdown-body ul { @apply list-disc list-inside mb-4 space-y-1 text-white/80; }
+.markdown-body ol { @apply list-decimal list-inside mb-4 space-y-1 text-white/80; }
+.markdown-body strong { @apply text-accent-cyan font-semibold; }
+.markdown-body code { @apply bg-white/10 px-1.5 py-0.5 rounded font-mono text-xs text-accent-cyan; }
+.markdown-body pre { @apply bg-black/40 p-4 rounded-xl border border-border-white overflow-x-auto mb-4; }
+.markdown-body blockquote { @apply border-l-2 border-accent-cyan/50 pl-4 italic text-white/60 mb-4; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
+}
