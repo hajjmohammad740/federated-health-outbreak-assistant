@@ -6,17 +6,21 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-bg-dark: #050816;
-  --color-accent-cyan: #22d3ee;
-  --color-accent-purple: #9333ea;
-  --color-border-cyan: rgba(34, 211, 238, 0.2);
-  --color-border-white: rgba(255, 255, 255, 0.1);
+  /* Main Colors */
+  --color-bg-dark: #092f4c;
+  --color-accent-cyan: #00cada;
+  --color-accent-light: #eef0f3;
+  --color-white: #ffffff;
+
+  /* Borders */
+  --color-border-cyan: rgba(0, 202, 218, 0.2);
+  --color-border-white: rgba(238, 240, 243, 0.15);
 }
 
 @layer base {
   body {
-    @apply bg-bg-dark text-[#e0e0e0] font-sans antialiased selection:bg-accent-cyan/30;
-  }
+  @apply bg-bg-dark text-[#eef0f3] font-sans antialiased selection:bg-accent-cyan/30;
+}
 }
 
 .glass-card {
@@ -24,15 +28,15 @@
 }
 
 .glass-nav {
-  @apply bg-black/40 backdrop-blur-md border-b border-border-cyan;
+  @apply bg-[#092f4c]/80 backdrop-blur-md border-b border-border-cyan;
 }
 
 .neon-glow {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 20px rgba(0, 202, 218, 0.3);
 }
 
 .neon-glow-purple {
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+  box-shadow: 0 0 20px rgba(238, 240, 243, 0.2);
 }
 
 .text-gradient {
@@ -40,10 +44,10 @@
 }
 
 /* Markdown Styles */
-.markdown-body h1 { @apply text-2xl font-bold mb-4 mt-6 text-white; }
-.markdown-body h2 { @apply text-xl font-bold mb-3 mt-5 text-white; }
-.markdown-body h3 { @apply text-lg font-bold mb-2 mt-4 text-white; }
-.markdown-body p { @apply mb-4 leading-relaxed text-white/90; }
+.markdown-body h1 { @apply text-2xl font-bold mb-4 mt-6 text-[#eef0f3]; }
+.markdown-body h2 { @apply text-xl font-bold mb-3 mt-5 text-[#eef0f3]; }
+.markdown-body h3 { @apply text-lg font-bold mb-2 mt-4 text-[#eef0f3]; }
+.markdown-body p { @apply mb-4 leading-relaxed text-[#eef0f3]; }
 .markdown-body ul { @apply list-disc list-inside mb-4 space-y-1 text-white/80; }
 .markdown-body ol { @apply list-decimal list-inside mb-4 space-y-1 text-white/80; }
 .markdown-body strong { @apply text-accent-cyan font-semibold; }
